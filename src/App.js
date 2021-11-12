@@ -1,33 +1,22 @@
-import { Component } from 'react'
+import { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import './App.css'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import Searchbar from './components/Searchbar'
 import ImageGallery from './components/ImageGallery'
-import axios from 'axios'
-console.dir(axios)
 
-// модалку приспособить
+export default function App() {
+  const [requestValue, setRequestValue] = useState('')
 
-class App extends Component {
-  state = {
-    requestValue: '',
+  const handleFormSubmit = (requestValueOfSearchbar) => {
+    setRequestValue(requestValueOfSearchbar)
   }
 
-  handleFormSubmit = (requestValue) => {
-    this.setState({ requestValue })
-  }
-
-  render() {
-    const { requestValue } = this.state
-    return (
-      <div className="App">
-        <Searchbar onSubmit={this.handleFormSubmit} />
-        <ImageGallery requestValue={requestValue} />
-        <ToastContainer autoClose={2500} />
-      </div>
-    )
-  }
+  return (
+    <div className="App">
+      <Searchbar onSubmit={handleFormSubmit} />
+      <ImageGallery requestValue={requestValue} />
+      <ToastContainer autoClose={2500} />
+    </div>
+  )
 }
-
-export default App

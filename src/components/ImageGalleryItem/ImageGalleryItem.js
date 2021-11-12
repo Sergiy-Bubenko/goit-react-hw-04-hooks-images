@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 
-function ImageGalleryItem({ arrImages, givLinkForModal }) {
+export default function ImageGalleryItem({ arrImages, givLinkForModal }) {
   return arrImages.map((obj) => {
     return (
       <li
@@ -11,11 +11,9 @@ function ImageGalleryItem({ arrImages, givLinkForModal }) {
       >
         <img className="ImageGalleryItem-image" src={obj.webformatURL} alt="" />
       </li>
-    );
-  });
+    )
+  })
 }
-
-export default ImageGalleryItem;
 
 ImageGalleryItem.propTypes = {
   givLinkForModal: PropTypes.func,
@@ -23,6 +21,6 @@ ImageGalleryItem.propTypes = {
     PropTypes.shape({
       id: PropTypes.number,
       webformatURL: PropTypes.string,
-    })
+    }),
   ),
-};
+}
